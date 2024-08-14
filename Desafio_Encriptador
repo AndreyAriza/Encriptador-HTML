@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encriptador de Texto</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Encriptador de Texto</h1>
+        <textarea id="inputText" placeholder="Ingresa el texto aquí..."></textarea><br>
+        <button onclick="encriptar()">Encriptar</button>
+        <button onclick="desencriptar()">Desencriptar</button><br>
+        <textarea id="outputText" readonly placeholder="El resultado aparecerá aquí..."></textarea><br>
+        <button onclick="copiarTexto()">Copiar</button>
+    </div>
+    <script>
+        // Función para encriptar el texto
+        function encriptar() {
+            let texto = document.getElementById("inputText").value;
+            let textoEncriptado = texto
+                .replace(/e/g, "enter")
+                .replace(/i/g, "imes")
+                .replace(/a/g, "ai")
+                .replace(/o/g, "ober")
+                .replace(/u/g, "ufat");
+            document.getElementById("outputText").value = textoEncriptado;
+        }
+
+        // Función para desencriptar el texto
+        function desencriptar() {
+            let texto = document.getElementById("inputText").value;
+            let textoDesencriptado = texto
+                .replace(/enter/g, "e")
+                .replace(/imes/g, "i")
+                .replace(/ai/g, "a")
+                .replace(/ober/g, "o")
+                .replace(/ufat/g, "u");
+            document.getElementById("outputText").value = textoDesencriptado;
+        }
+
+        // Función para copiar el texto encriptado/desencriptado al portapapeles
+        function copiarTexto() {
+            let textoCopiado = document.getElementById("outputText");
+            textoCopiado.select();
+            document.execCommand("copy");
+            alert("Texto copiado al portapapeles!");
+        }
+    </script>
+</body>
+</html>
